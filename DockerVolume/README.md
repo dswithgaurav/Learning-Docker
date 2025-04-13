@@ -111,3 +111,63 @@ docker run -v $(pwd)/data:/app/data fastapi-app
 | Performance     | ✅ Better        | ⚠️ Depends on OS   |
 
 ---
+## Read Only Volume (Bind-Mount)
+
+> By default, Docker volumes and bind mounts are mounted with read and write permissions. If you want to make a **bind mount** read-only — meaning the container can read the files but not modify them — you can add `:ro` at the end of the mount path.  
+>
+> **Example:**  
+> ```bash
+> docker run -v /host/path:/container/path:ro my-image
+> ```
+> In this example, the container will be able to access the files at `/host/path`, but it won't be able to change them.
+
+
+
+
+Here's a cleaned-up, clearer, and slightly expanded version of your note for better readability and understanding:
+
+---
+
+## 🐳 Docker Supports Build-time Arguments and Run-time Environment Variables
+
+### 🔧 `ARG` (Build-time Argument)
+- Used to **pass variables during the image build process**.
+- Available **only inside the Dockerfile**, **not accessible to the running container** or application code.
+- Typically used for things like installing dependencies or setting temporary build parameters.
+- **Set using** `--build-arg` during the `docker build` command.
+
+**Example:**
+```Dockerfile
+ARG VERSION=1.0
+RUN echo "Building version $VERSION"
+```
+```bash
+docker build --build-arg VERSION=2.0 -t my-image .
+```
+
+### 🌍 `ENV` (Environment Variable)
+- Used to **set environment variables** that are available:
+  - Inside the **Dockerfile** (can be used in `RUN`, `CMD`, etc.)
+  - In the **running container and your application code**
+- Can be set at **build-time** (in Dockerfile) or **run-time** (when starting the container).
+- **Set using:**
+  - `ENV` in Dockerfile  
+  - `--env` or `-e` during `docker run`
+
+**Example:**
+```Dockerfile
+ENV NODE_ENV=production
+```
+```bash
+docker run -e NODE_ENV=development my-image
+```
+
+### Using .env with docker run
+You can also pass environment variables from the .env file directly when running a container using the --env-file option.
+
+**Example:**
+```
+docker run --env-file .env my-image
+```
+---
+
