@@ -1,4 +1,4 @@
-## Learniing Docker
+## Learning Docker
 
 Here’s a list of essential **Docker commands** in Bash, categorized for easy reference.  
 
