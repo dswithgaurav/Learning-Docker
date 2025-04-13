@@ -1,6 +1,0 @@
-jkj2025-04-13 07:58:10,271 - INFO - Incoming request: GET http://localhost:1000/
-2025-04-13 07:58:10,280 - INFO - Root endpoint accessed
-2025-04-13 07:58:10,281 - INFO - Completed response: 200
-2025-04-13 07:59:00,346 - INFO - Incoming request: GET http://localhost:1000/
-2025-04-13 07:59:00,350 - INFO - Root endpoint accessed
-2025-04-13 07:59:00,351 - INFO - Completed response: 200
