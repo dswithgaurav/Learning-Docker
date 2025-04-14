@@ -102,4 +102,4 @@ docker-compose run <service_name> <command>
 
 - Use `.env` files to avoid hardcoding environment variables.
 - Use volume mounts for live code reloads during development.
-- Prefer named volumes for persistent data instead of anonymous ones.
+- Prefer named volumes for persistent data instead of anonymous ones."
