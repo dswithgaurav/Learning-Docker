@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  mongodb:
+    image: "mongo"
+    volumes:
+      - data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=gaurav
+      - MONGO_INITDB_ROOT_PASSWORD=secret 
+
+  backend:
+    build: ./src/backend/
+    ports:
+      - '80:80'
+    environment:
+      - MONGODB_USERNAME=gaurav
+      - MONGODB_PASSWORD=secret
+    volumes:
+      - logs:/app/logs
+      - /Users/gaurav/backend:/app
+      - /app/node_modules
+    depends_on:
+      - mongodb  
+
+  frontend:
+    build: ./src/frontend/
+    ports:
+      - '3000:3000'
+    volumes:
+      - /Users/gaurav/development/src:/app/src
+    stdin_open: true
+    tty: true
+    
+volumes:
+  data:
+  logs:
